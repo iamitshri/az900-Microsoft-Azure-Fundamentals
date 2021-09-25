@@ -31,7 +31,15 @@
 #### Describe the core Azure architectural components
 
 - describe the benefits and usage of Regions and Region Pairs
+  - Geography contains one or more regions 
+    - Geographies are fault-tolerant to withstand complete region failure
+    - Geographies allow customers with specific data-residency and compliance needs to keep their data and applications close
+  - Region pair consists of two regions within same geography
+    - Azure planned maintenance affects one region at a time
+    - https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions
 - describe the benefits and usage of Availability Zones
+  - AZs are distinct physical locations within region
+    - Each AZ may have one or more data centers equipped with independent power, cooling and networking
 - describe the benefits and usage of Resource Groups
 - describe the benefits and usage of Subscriptions
 - describe the benefits and usage of Management Groups
