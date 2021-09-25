@@ -3,7 +3,8 @@
 ## Syllabus as of 9/25/21
 
 ### Describe Cloud Concepts (20-25%)
-Identify the benefits and considerations of using cloud services
+
+#### Identify the benefits and considerations of using cloud services
 - identify the benefits of cloud computing, such as High Availability, Scalability, Elasticity, Agility, and Disaster Recovery
 - identify the differences between Capital Expenditure (CapEx) and Operational Expenditure (OpEx)
 - describe the consumption-based model
