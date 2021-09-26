@@ -1,6 +1,8 @@
 ## Notes for [Exam AZ-900: Microsoft Azure Fundamentals](https://docs.microsoft.com/en-us/learn/certifications/azure-fundamentals/)
 
-## Syllabus as of 9/25/21
+## [syllabus](./syllabus/microsoft-certified-azure-fundamentals-skills-measured.pdf) as of 9/25/21
+
+
 
 ### Describe Cloud Concepts (20-25%)
 
@@ -48,6 +50,7 @@
 - "Fault Domain" is a collection of servers that share common resources such as power and network connectivity.
 - "Availability Set" refers to two or more Virtual Machines deployed across different Fault Domains to avoid a single point of failure.
 - describe the benefits and usage of Availability Zones
+  - Multi AZ deployment protects from Data center failure 
   - AZs are distinct physical locations within region
     - Each AZ may have one or more data centers equipped with independent power, cooling and networking
 - describe the benefits and usage of Resource Groups
@@ -78,8 +81,101 @@
 
 - describe the benefits and usage of Virtual Machines, Azure App Services, Azure Container Instances (ACI), Azure Kubernetes Service (AKS), and Windows Virtual Desktop
 - describe the benefits and usage of Virtual Networks, VPN Gateway, Virtual Network peering, and ExpressRoute
+- express route: dedicated connection
+- Azure Virtual Network
+  - The Azure Virtual Network service is used to define an isolated network in Azure. The virtual network can then be used to host your resources such as Azure virtual machines.
+  - The Azure virtual network gets assigned an address space which you specify when you create an Azure virtual network
+  - You can then add subnets to your Azure virtual network. This helps divide your network into more logical segments.
+  - An example is shown below of having multiple subnets. You could have one subnet named SubnetA in the virtual network to host your Web servers and another subnet to host the Database servers.
+  - When you create a virtual machine in a virtual network, the virtual machine gets a Private IP address from the address space of the subnet is it launched in.
+- Network Security Groups
+  - These are used to filter network traffic to and from Azure resources in an Azure virtual network.
+  - A network security group is attached to the network interface attached to the virtual machine.
+  - A network security group consists of Inbound rules that are used to control the traffic inbound into a virtual machine
+  - By default all traffic into a virtual machine is DENIED.
+  - You have explicitly add rules to allow traffic into a virtual machine
+  - There are also outbound rules to control the traffic flowing out of the virtual machine. By default all traffic outbound onto the Internet is allowed.
+- Virtual Network Peering
+  - Virtual Network Peering is used to connect two Azure virtual networks together via the backbone network.
+  - Azure supports connecting two virtual networks located in the same region or networks located across regions.
+  - Once you enable virtual network peering between two virtual networks, the virtual machines can then communicate via their private IP addresses across the peering connection.
+  - You can also peer virtual networks that are located across different subscriptions.
+  - The virtual networks can't have overlapping CIDR blocks.
+- Point-to-Site VPN Connection
+  - A Point-to-Site VPN connection is used to establish a secure connection between multiple client machines and an Azure virtual network via the Internet.
+  - Below is a diagram from the Microsoft documentation on a sample scenario
+  - Image reference -https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
+  - To implement a Point to Site VPN connection, you need to create a VPN Gateway in Azure.
+- Site-to-Site VPN Connection
+  - A Site-to-Site VPN connection is used to establish a secure connection between an on-premise network and an Azure network via the Internet.
+  - Below is a diagram from the Microsoft documentation on a sample scenario
+    - Image reference - https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal
+  - On the on-premise side, you need to have a VPN device that can route traffic via the Internet onto the VPN gateway in Azure. The VPN device can be a hardware device like a Cisco router or a software device ( e.g Windows Server 2016 running Routing and Remote services). The VPN device needs to have a publicly routable IP address.
+  - The subnets in your on-premise network must not overlap with the subnets in your Azure virtual network
+  - The Site-to-Site VPN connection uses an IPSec tunnel to encrypt the traffic.
+  - The VPN gateway resource you create in Azure is used to route encrypted traffic between your on-premise data center and your Azure virtual network.
 - describe the benefits and usage of Container (Blob) Storage, Disk Storage, File Storage, and storage tiers
+- Azure Storage Accounts
+  - Types of storage accounts
+    - General-purpose v2 accounts – This is recommended for most scenarios. This storage account type provides the blob, file , queue and table service.
+    - Premium block blobs – This is specifically when you want premium performance for storing block or append blobs.
+    - Premium file shares – This is specifically when you want premium performance for file-only storage.
+    - Premium page blobs – This is specifically when you want premium performance for page blobs.
+- The most common type of storage account is the General Purpose v2 storage account.
+- Use case scenarios for the different services in a General Purpose v2 storage account
+- Blob service
+  - This is object storage for the cloud.
+  - Here you can store massive amounts of unstructured data on the cloud.
+  - This is highly recommended when you want to store images, documents, video and audio files.
+  - Within the blob service, you create a container that is used to store the blob objects.
+  - There are three different types of blobs
+  - Block blobs – This is used for storing text and binary data.
+  - Append blobs – This is ideal for logging data.
+  - Page blobs – This is used to store virtual hard disk files for Azure virtual machines.
+  - To use the Blob service you have to first create a container and then upload the blobs or objects into the container.
+  - When you upload an object or blob to the service, each bob gets a unique URL which you can access if you are assigned the right permissions
+- File service 
+  - Use this service if you need to store files that need to be accessed by machines using the SMB (Server Message Block) protocol
+  - In the File service, you can first go ahead and create a file share.
+  - You can then mount this file share from different machines. You can't mount drives with the Blob service.
+- Table service 
+  - Use this if you want to store NoSQL data or table like data.
+  - It's easy and simple to create a table and add data from the Azure portal itself.
+- Queue service 
+  - Use this if you want to exchange messages between components of your application
+- Azure Storage Accounts 
+- Replication
+  - There are different replication techniques available to make your data highly available.
+  - The different replication techniques available
+  - Locally-redundant storage (LRS) - Here data is replicated synchronously three times within a physical location in the primary region.
+  - Zone-redundant storage (ZRS) - Here data is replicated synchronously across three Azure availability zones in the primary region. This is good when you want to have data present even in the event of a data center failure.
+  - Geo-redundant storage (GRS) - Here data is replicated synchronously three times in the primary region, then replicated asynchronously to the secondary region.
+  - Read access Geo-redundant storage (RA-GRS) - Here data is replicated synchronously three times in the primary region, then replicated asynchronously to the secondary region. 
+    - Here the data in the secondary region is also available for read-only purposes.
+- Azure Storage Accounts - Access tiers
+  - Access tiers help you optimize the storage costs and access costs for your data. 
+  - The different access tiers are
+  1. Hot – This is optimized for storing data that is accessed frequently. This can be set at the account level.
+  2. Cool – This is optimized for storing data that is infrequently accessed and stored for at least 30 days. This can be set at the account level.
+     - Note:- For the Cool Access tier, the storage costs are lower than the Hot tier. But the access costs are higher than the Hot access tier.
+  3. Archive tier - This is optimized for storing data that is rarely accessed and stored for at least 180 days. This can be set only at the blob level.
+   - Note:- When a blob is in the archive tier, you can’t access the blob. You have to rehydrate the blob first before it can be accessed.
+   - Also, the storage costs are the least when it comes to the Archive access tier. But the access costs are the highest.
 - describe the benefits and usage of Cosmos DB, Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL, and SQL Managed Instance
+- Azure SQL Database (Platform as a service)
+  - This is a service that allows you to create a managed Microsoft SQL Server database on the cloud. The advantages of using this service
+  - You don't have to manage the underlying infrastructure. This is managed by Azure.
+  - You have a variety of purchasing options
+  - You have automated backups. This reduces the burden of managing backups.
+  - It gives you a service level agreement of 99.99%
+  - If you need to have more control over the database engine, then consider installing the SQL Server engine on an Azure virtual machine.
+- Azure Synapse Analytics
+  - This was formerly known as Azure SQL Data warehouse.
+  - This service is used for enterprise data warehousing and Big Data Analytics
+  - When you want to perform analysis on a large data set , consider using this service.
+- Azure Cosmos DB
+  - This is a data store that companies can opt for, when they want to get low latency access to their data, and they want high availability for their data.
+  - It is a multi-model database. This means you can choose from a variety of options when it comes to what type of data you want to store in the account.
 - describe the benefits and usage of Azure Marketplace
 
 ### Describe core solutions and management tools on Azure (10-15%)
@@ -96,10 +192,12 @@
 
 - describe the functionality and usage of the Azure Portal, Azure PowerShell, Azure CLI, Cloud Shell, and Azure Mobile App
 - describe the functionality and usage of Azure Advisor
+  - Azure Advisor—your free, personalized guide to Azure best practices
 - describe the functionality and usage of Azure Resource Manager (ARM) templates
   - Infra as code
 - describe the functionality and usage of Azure Monitor
 - describe the functionality and usage of Azure Service Health
+  - Personalized alerts and guidance for Azure service issues
 
 ### Describe general security and network security features (10-15%)
 
@@ -206,9 +304,9 @@
   - It can be used to identify and investigate suspicious user activities and advanced attacks.
 - Azure Key Vault
   - Helps you perform Secrets management – Here you can securely store your tokens, passwords , certificates , API keys and other secrets
-  - You can use this service to create encryption keys. You can then use these encryptions keys to encrypt your data.
+  - You can use this service to create encryption keys. You can then use these encryption keys to encrypt your data.
   - You can also easily provision, manage, and deploy public and private Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificates
-  - All of the secrets and keys are safeguarded by Azure, using industry-standard algorithms, key lengths, and hardware security modules (HSMs).
+  - All the secrets and keys are safeguarded by Azure, using industry-standard algorithms, key lengths, and hardware security modules (HSMs).
   - You can also monitor all the key vault activity by enabling logging. The logs can be sent to an Azure storage account, to an event hub or to Azure Monitor logs.
 - Azure Policies
   - This service can be used to create, assign and manage policies.
@@ -219,10 +317,11 @@
   - For example if you wanted to give access to a user to manage virtual machines in your subscription, you can use role based access control
   - Roles can be accessed at different scopes - Subscription, Resource groups and resources
   - Reference - https://docs.microsoft.com/en-us/azure/role-based-access-control/overview
-
-
 - describe the Cloud Adoption Framework for Azure
-
+  - Helps you accomplish your goal of adopting azure by showing you relevant articles to read 
+  - Use Total cost of ownership calculator to know costs
+  - TCO calculator - https://azure.microsoft.com/en-us/pricing/tco/calculator/
+  - Budget alerts helps you stay within budget
 #### Describe privacy and compliance resources
 
 - describe the Microsoft core tenets of Security, Privacy, and Compliance
@@ -246,9 +345,24 @@
   - Different services have different SLAs.
 - identify actions that can impact an SLA (i.e. Availability Zones)
 - describe the service lifecycle in Azure (Public Preview and General Availability)
+  - NO SLA on preview products
+  - Private preview vs public preview
+  - Private preview: request Microsoft to preview and give the feedback
+  - Public preview
+    - For services in public preview , you can actually view them from the Azure portal itself. These services are available for review for all customers.
+
+- 
 - Recovery time objective RTO: maximum acceptable time an application is unavailable after an incident
 - Recovery point objective RPO: maximum duration of data loss that's acceptable during a disaster
+
+#### Azure support plans
+- Basic support plan ( takes long time to resolve  )
+- Developer ( use for non-prod)
+- Standard (Fast response) (use for production workload) (24/7 email and phone)
+- Professional Direct ( use for Business critical)
+- [https://azure.microsoft.com/en-us/support/plans/](https://azure.microsoft.com/en-us/support/plans/)
 
 ### Links:
 - https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/considerations/fundamental-concepts
 - https://docs.microsoft.com/en-us/azure/governance/blueprints/overview
+- Some notes are from course: https://www.udemy.com/course/microsoft-azure-beginners-guide
