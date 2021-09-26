@@ -2,7 +2,8 @@
 
 ## [syllabus](./syllabus/microsoft-certified-azure-fundamentals-skills-measured.pdf) as of 9/25/21
 
-
+#### AWS to Azure services mapping
+- [AWS to Azure services comparison](https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services)
 
 ### Describe Cloud Concepts (20-25%)
 
@@ -257,6 +258,58 @@
   - You can track costs.
 
 - describe the benefits and usage of serverless computing solutions that include Azure Functions and Logic Apps
+- Azure App Service
+  - This is an HTTP-based service that allows you to host web applications, REST API's and mobile back ends. You can develop a program in programming languages such as .NET, .NET Core, Java, Ruby, Node.js, PHP and Python.
+  - Here you don't need to manage the underlying infrastructure. It allows you to focus on code development.
+  - Each App service needs to be associated with an App Service Plan.
+  - Each App service plan has an associated cost per month and also has specific features based on the plan you choose.
+- Virtual Machine Scale Sets
+  - This service allows you to create and manage a group of identical load balanced virtual machines.
+  - Here the number of Virtual Machine instances in the scale set can scale based on demand
+  - This is the best service if you want to add scalability to your application
+- Azure Load Balancer
+  - The Azure Load balancer is used to distribute incoming network traffic to a backend group of servers.
+  - This service helps increase the availability of your entire application architecture
+  - Here the Load Balancer would take the incoming requests from the users and direct the requests to virtual machines running in an Azure virtual network.
+  - If you have a web application running on the backend virtual machines, the requests would be distributed across the virtual machines by the Azure Load Balancer.
+- Other tools to access Azure resources
+- You can use other tools to access and work with Azure resources
+  - You can use PowerShell which can work on Windows, macOS and Linux
+  - You can use the Azure command line interface which can work on Windows, macOS and Linux
+  - You can use Azure cloud shell from the browser, which can then work on any operating system which has browser support
+- Azure Functions
+  - This service allows you to run small pieces of code as functions.
+  - Here you just develop and upload the code to an Azure Function.
+  - You only get billed for the amount of time the code is run.
+  - You can use a variety of programming languages in Azure Functions.
+  - C#, Java , JavaScript, PowerShell and Python.
+  - You can use libraries by using NuGet and NPM packages.
+    - Pricing plans available for Azure Functions
+    - Consumption Plan – Here you only pay for the time the code runs.
+    - App Service Plan – If you already have an App Service plan that runs a web application, you can reuse the same plan to run Azure Functions. This would save on cost if you already have an App Service Plan in place.
+    - Premium Plan – Here you get a number of **pre-warmed instances** that are always online and ready to run your functions. The plan also automatically adds more compute when required.
+  - You can also invoke your functions via various triggers
+- Azure Logic Apps
+  - This is a cloud service that helps you schedule, automate and orchestrate tasks , business processes and workflows.
+  - How it works
+  - You first design a workflow in Azure Logic Apps
+  - Each workflow starts with a trigger.
+  - The trigger is fired via a specific event
+  - When the trigger is fired , the Logic App engine creates a logic app instance that runs the workflow.
+  - Connectors for Azure Logic Apps
+  - These connectors provide easy access to event, data and actions that are sent from external applications, services , systems or platforms.
+  - You have built-in connectors that can connect to Azure services such as Azure functions, Azure API Apps etc.
+  - You have Managed connectors that can connect to platforms such as Office 365, Microsoft Dynamics.
+- Azure Traffic Manager
+  - The Azure Traffic Manager service is a DNS-based traffic load balancer that distributes traffic across services that are distributed across different Azure regions.
+  - The Traffic Manager service is used to direct client requests to the most appropriate service endpoint that is based on a traffic-routing method and the health of the endpoints.
+  - The different traffic routing methods available for the Azure Traffic Manager are
+    - Priority – Route traffic to another endpoint in case the primary fails.
+    - Weighted – Route traffic to different endpoints based on weight.
+    - Performance - you want end users to use the "closest" endpoint in terms of the lowest network latency.
+    - Geographic - geographic location their DNS query originates from.
+    - Multivalued – Here different endpoints are sent to the client. The client then selects the endpoint to send the request to.
+    - Subnet – This maps a set of end-user IP address ranges to a specific endpoint within a Traffic Manager profile.
 - describe the benefits and usage of Azure DevOps, GitHub, GitHub Actions, and Azure DevTest Labs
 
 #### Describe Azure management tools
