@@ -193,8 +193,8 @@
   - You have 2 plans for Azure DDoS protection.
   - Basic – This is automatically enabled. This continuously monitors traffic in real time and looks at mitigation of common network-level attacks.
   - Standard – This is a paid plan. But you get many benefits
-  - –Here you can get real time attack metrics and diagnostic logs via Azure Monitor
-  - –You can get help from DDoS Experts during a live attack
+  - Here you can get real time attack metrics and diagnostic logs via Azure Monitor
+  - You can get help from DDoS Experts during a live attack
 - Azure Information protection
   - This is a solution that can help an organization classify and protect its documents and email by applying labels.
   - The labels can be applied automatically by administrators through the use of rules and conditions.
