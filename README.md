@@ -22,8 +22,10 @@
   - User manages OS and everything needed to run application
 - describe Platform-as-a-Service (PaaS)
   - User manages data and software access
-- describe serverless computing
-  - User only uses or pays for compute time when needed without deploying any compute resources
+  - You manage the applications and services you develop, and the cloud service provider typically manages everything else.
+  - https://azure.microsoft.com/en-us/overview/what-is-paas/
+  - describe serverless computing
+    - User only uses or pays for compute time when needed without deploying any compute resources
 - describe Software-as-a-Service (SaaS)
   - User only uses the software without worrying about underlying details. e.g. gmail
 - identify a service type based on a use case
@@ -31,9 +33,13 @@
 #### Describe the differences between types of cloud computing
 
 - define cloud computing
+  - No servers on-premise
 - describe Public cloud
+  - In a public cloud, you share the same hardware, storage, and network devices with other organizations or cloud “tenants,” and you access services and manage your account using a web browser
 - describe Private cloud
+  - A private cloud consists of cloud computing resources used exclusively by one business or organization
 - describe Hybrid cloud
+  - combines on-premises infrastructure—or a private cloud—with a public cloud
 - compare and contrast the three types of cloud computing
 
 ### Describe Core Azure Services (15-20%)
@@ -185,6 +191,71 @@
 - describe the benefits and usage of Internet of Things (IoT) Hub, IoT Central, and Azure Sphere
 - describe the benefits and usage of Azure Synapse Analytics, HDInsight, and Azure Databricks
 - describe the benefits and usage of Azure Machine Learning, Cognitive Services and Azure Bot Service
+- Application Insights
+  - Equivalent to NewRelic 
+  - Application Performance Management service for web developers.
+  - You can use this tool to monitor your applications.
+  - It can help developers detect anomalies in the application.
+  - It can help diagnose issues.
+  - It can also help understand how users use your application.
+  - It also helps you improve performance and usability of your application.
+  - How does it work
+    - You install a small instrumentation package within your application.
+    - You can see the statistics of your application locally in Visual Studio as you run your application.
+    - You can also use the Application Insights resource in Azure to monitor your application.
+    - What are the different aspects monitored by Application Insights
+    - Request rates, the response times and failure rates – This is done at the page level.
+    - Exception recorded by your application.
+    - Page views and their load performance as reported from the user’s browser.
+    - User and session counts.
+    - Performance counters of the underlying Windows or Linux Machines.
+    - Diagnostic trace logs from your application.
+    - Any custom events or metrics that the developer writes themselves in the code.
+- Azure Cognitive services
+  - Azure Cognitive Services are API’s , SDK’s and services available for helping developers building intelligent applications.
+  - Computer Vision – This helps developers process images and return information. You just supply the image, and the service can help identify the image.
+    - This service can detect objects, help provide categories for the image.
+    - It can also detect color , faces , help describe an image.
+    - It can also extract text from images.
+    - It can also help moderate content in images.
+  - Face API – This can be used to detect, recognize and analyze human faces in images.
+    - It can also help find similar faces from a set of images.
+    - It can also help identify a detected face against a database of people.
+  - Speech services
+    - You can use the Speech-to-Text service to translate speech to text.
+    - You can also generate synthesized speech from text using Text-to-Speech.
+- Azure Machine Learning
+  - Machine learning is the process that enables computers to use existing data to forecast future behaviors , outcomes and trends.
+  - Here the computers don’t need to be programmed on how to learn.
+  - Azure Machine Learning gives you a cloud-based environment for preparing data, train the data, testing, deploying and managing machine learning models.
+  - You get a visual interface which can be used to drag and drop modules to build experiments and deploy models.
+  - Machine Learning Studio – This is a drag-and-drop visual workspace which you can use to build, test and deploy machine learning solutions without the need of writing any sort of code.
+  - This tool has prebuilt and preconfigured machine learning algorithms.
+- Azure HDInsight
+  - This is a cloud distribution of Hadoop based components.
+  - Azure HDInsight allows you to process large amounts of data.
+  - You can use HDInsight for a variety of big data processing scenarios such as Data warehousing , Batch processing and for Data science as well.
+  - You can create different types of clusters – Apache Hadoop, Apache Spark, Apache Hbase.
+  - HDInsight also supports a host of programming languages such as Java, Python,.Net and Go.
+- Azure DevOps
+  - This is a complete set of tools that can be used to help teams to plan work, collaborate on code development and build and deploy applications.
+  - Azure DevOps have the following services in place
+  - Azure Repos – This allows you to host Git repositories or use Team Foundation Version Control.
+  - Azure Pipelines – This provides build and release services for continuous integration and release.
+  - Azure Boards – This helps to plan and track work items.
+  - Azure Test Plans – This provides tools for testing of applications.
+  - Azure Artifacts – This allows teams to share Maven, npm and NuGet packages from public and private sources.
+- Azure DevTest Labs
+  - This service allows developers to efficiently self-manage virtual machines and PaaS resources without the need to wait for approvals.
+  - The DevTest Labs can be used to create labs consisting of pre-configured bases or Azure Resource Manager templates.
+  - With DevTest Labs, you can quickly provision Windows and Linux based environment through the use of reusable templates and artifacts.
+  - You can easily create load testing environments and create environments for training and demos.
+  - This service also helps in optimizing costs through the following features
+  - Here you can set an auto-shutdown and auto-start schedules for virtual machines.
+  - You can set policies on the number of virtual machines users can create.
+  - You can set policies on the size of the virtual machine.
+  - You can track costs.
+
 - describe the benefits and usage of serverless computing solutions that include Azure Functions and Logic Apps
 - describe the benefits and usage of Azure DevOps, GitHub, GitHub Actions, and Azure DevTest Labs
 
