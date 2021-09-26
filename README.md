@@ -97,7 +97,7 @@
 - describe the functionality and usage of the Azure Portal, Azure PowerShell, Azure CLI, Cloud Shell, and Azure Mobile App
 - describe the functionality and usage of Azure Advisor
 - describe the functionality and usage of Azure Resource Manager (ARM) templates
-
+  - Infra as code
 - describe the functionality and usage of Azure Monitor
 - describe the functionality and usage of Azure Service Health
 
@@ -114,6 +114,7 @@
 
 - describe the concept of defense in depth
 - describe the functionality and usage of Network Security Groups (NSG)
+  - Use an Azure network security group to filter network traffic to and from Azure resources in an Azure virtual network
 - describe the functionality and usage of Azure Firewall
 - describe the functionality and usage of Azure DDoS protection
 
@@ -129,11 +130,97 @@
 #### Describe Azure governance features
 
 - describe the functionality and usage of Role-Based Access Control (RBAC)
+  - If control of an action is required, then Azure RBAC is the correct tool to use
+  - https://docs.microsoft.com/en-us/azure/role-based-access-control/overview#scope
 - describe the functionality and usage of resource locks
+  - As an administrator, you can lock a subscription, resource group, or resource to prevent other users in your organization from accidentally deleting or modifying critical resources.
+  - CanNotDelete means authorized users can still read and modify a resource, but they can't delete the resource. 
+  - ReadOnly means authorized users can read a resource, but they can't delete or update the resource. Applying this lock is similar to restricting all authorized users to the permissions granted by the Reader role.
+  - The lock overrides any permissions the user might have.
+  - It's important to understand that locks don't apply to all types of operations. 
+  - Azure operations can be divided into two categories - control plane and data plane. 
+  - Locks only apply to control plane operations
+    - Control plane operations are operations sent to https://management.azure.com
+  - Lock inheritance 
+    - When you apply a lock at a parent scope, all resources within that scope inherit the same lock. 
+    - Even resources you add later inherit the lock from the parent. 
+    - The most restrictive lock in the inheritance takes precedence
 - describe the functionality and usage of tags
   - maximum of 50 tag name/value pairs are allowed
 - describe the functionality and usage of Azure Policy
+  - Azure Policy evaluates resources in Azure by comparing the properties of those resources to business rules
+- The combination of Azure RBAC and Azure Policy provides full scope control in Azure.
 - describe the functionality and usage of Azure Blueprints
+  - A blueprint is a package or container for composing focus-specific sets of standards, patterns, and requirements related to the implementation of Azure cloud services, security, and design that can be reused to maintain consistency and compliance.
+    - Blueprints are a declarative way to orchestrate the deployment of various resource templates and other artifacts such as:
+      - Role Assignments
+      - Policy Assignments
+      - Azure Resource Manager templates (ARM templates)
+      - Resource Groups
+  - This is a service that allows you to define a repeatable set of Azure resources. 
+  - The definition of the Azure resources can adhere to an organization’s standards, patterns and requirements. 
+  - Using blueprints , you can orchestrate the deployment of resources such as role assignments, policy assignments, Azure resource manager templates and resource groups. 
+  - Some differences between Azure blueprints and resource manager templates 
+    - You can use blueprints to upgrade several subscriptions at once . 
+    - The relationship between the blueprint definition and the blueprint assignment is reserved.
+- Azure Security Center 
+  - This is an infrastructure security management system. 
+  - You can use this tool to improve the security of your Azure based resources and on-premise resources as well. 
+  - Azure Security Center has in-built support for services such as Azure virtual machines , Function Apps, Azure SQL Server databases. 
+  - You can also allow Azure Security Center to give recommendations on what to do for on-premise Windows and Linux servers. 
+  - On these servers, you need to ensure you install the Microsoft Monitoring agent. 
+  - This service also helps detect and prevent threats at an Infrastructure layer 
+- Azure AD Identity Protection 
+  - This is a service that can help detect suspicious actions related to user identities 
+  - This helps add more security to the sign-ins to your Azure AD Account. 
+  - This service can help detect the following
+  - Users with leaked credentials
+  - Sign-ins from anonymous IP addresses
+  - Sign-ins from infected devices
+  - Sign-ins from IP addresses with suspicious activity
+  - Sign-ins from unfamiliar locations
+  - Impossible travel to atypical locations
+- Azure Firewall
+  - This is a managed, cloud-based network security service that can be used to protect your network resources.
+  - It has features such as Threat intelligence 
+  - This can filter incoming requests and alert or deny traffic from/to malicious IP addresses and domains.
+  - The firewall itself has built-in high availability.
+  - It can scale automatically based on network traffic flows.
+  - Here you can ensure that all traffic from machines in an Azure virtual network flows via the Azure Firewall service.
+- Azure DDoS protection
+  - This service helps protect against Distributed denial of service attacks.
+  - This is probably the biggest security concern for companies when they expose their applications to the Internet.
+  - You have 2 plans for Azure DDoS protection.
+  - Basic – This is automatically enabled. This continuously monitors traffic in real time and looks at mitigation of common network-level attacks.
+  - Standard – This is a paid plan. But you get many benefits
+  - –Here you can get real time attack metrics and diagnostic logs via Azure Monitor
+  - –You can get help from DDoS Experts during a live attack
+- Azure Information protection
+  - This is a solution that can help an organization classify and protect its documents and email by applying labels.
+  - The labels can be applied automatically by administrators through the use of rules and conditions.
+  - The labels can use visual markers on documents to tell the user the classification of the document
+- Azure Advanced Threat Protection
+  - This is a cloud-based security tool that can be used to identify, detect and investigate advanced threats, compromised identities.
+  - This service can be used to protect identities and credentials stored in Active Directory.
+  - When monitoring your on-premise Active Directory domain controllers, you need to install an Azure ATP sensor on the domain controller.
+  - It can be used to identify and investigate suspicious user activities and advanced attacks.
+- Azure Key Vault
+  - Helps you perform Secrets management – Here you can securely store your tokens, passwords , certificates , API keys and other secrets
+  - You can use this service to create encryption keys. You can then use these encryptions keys to encrypt your data.
+  - You can also easily provision, manage, and deploy public and private Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificates
+  - All of the secrets and keys are safeguarded by Azure, using industry-standard algorithms, key lengths, and hardware security modules (HSMs).
+  - You can also monitor all the key vault activity by enabling logging. The logs can be sent to an Azure storage account, to an event hub or to Azure Monitor logs.
+- Azure Policies
+  - This service can be used to create, assign and manage policies.
+  - You can use these policies to ensure that resources in your Azure account remain compliant with corporate standards and service level agreements.
+  - You can use in-built policies or even define your own policies
+- Role-based access control
+  - This can be used to assign access to resources in Azure.
+  - For example if you wanted to give access to a user to manage virtual machines in your subscription, you can use role based access control
+  - Roles can be accessed at different scopes - Subscription, Resource groups and resources
+  - Reference - https://docs.microsoft.com/en-us/azure/role-based-access-control/overview
+
+
 - describe the Cloud Adoption Framework for Azure
 
 #### Describe privacy and compliance resources
@@ -144,7 +231,9 @@
 - describe the purpose of the Azure compliance documentation
 - describe the purpose of Azure Sovereign Regions (Azure Government cloud services and Azure China cloud services)
 
+
 ### Describe Azure cost management and Service Level Agreements (10- 15%)
+
 #### Describe methods for planning and managing costs
 - identify factors that can affect costs (resource types, services, locations, ingress and egress traffic)
 - identify factors that can reduce costs (reserved instances, reserved capacity, hybrid use benefit, spot pricing)
@@ -162,3 +251,4 @@
 
 ### Links:
 - https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/considerations/fundamental-concepts
+- https://docs.microsoft.com/en-us/azure/governance/blueprints/overview
