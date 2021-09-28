@@ -474,8 +474,6 @@
   - Private preview: request Microsoft to preview and give the feedback
   - Public preview
     - For services in public preview , you can actually view them from the Azure portal itself. These services are available for review for all customers.
-
-- 
 - Recovery time objective RTO: maximum acceptable time an application is unavailable after an incident
 - Recovery point objective RPO: maximum duration of data loss that's acceptable during a disaster
 
@@ -486,7 +484,62 @@
 - Professional Direct ( use for Business critical)
 - [https://azure.microsoft.com/en-us/support/plans/](https://azure.microsoft.com/en-us/support/plans/)
 
-### Links:
+### General
+- There are two ways a VM can be stopped, resulting into two states from a cost viewpoint:
+- Azure’s stopped state: An administrator or a process running on the OS in the VM shuts down the OS. In most cases, the administrator or a subscription co-administrator controls when this happens. As part of managing the VM, an administrator may need to manually shut down the OS temporarily (for example, to reconfigure an application running on the VM). However, administrators may also want to run other tools that shut down the OS (for example, Sysprep on a Windows VM). The OS in the VM is stopped, and the VM services are unavailable, but the VM continues to reserve the compute and network resources that Azure provisioned, and these resources will continue to incur charges.
+- Azure’s deallocated state: Azure shuts down the VM by using Azure tools or processes. In most cases, the administrator or a subscription co-administrator controls when this happens. If the VM does not need to be used immediately but needs to remain in a resumable state, administrators can minimize costs by shutting down the VM using the Azure portal. When a VM is deallocated, the VM’s OS stops, and this frees up the hardware and network resources Azure previously provisioned for it.
+- Reference(s): https://blogs.technet.microsoft.com/uspartner_ts2team/2014/10/10/azure-virtual-machines-stopping-versus-stopping-deallocating/
+
+- What are **Azure Reservations**? Azure Reservations help you save money by committing to one-year or three-year plans for multiple products. Committing allows you to get a discount on the resources you use. Reservations can significantly reduce your resource costs by up to 72% from pay-as-you-go prices. Reservations provide a billing discount and don't affect the runtime state of your resources. After you purchase a reservation, the discount automatically applies to matching resources
+
+- **Azure Logic Apps** is a cloud service that is designed to schedule, automate, and orchestrate tasks, business processes, and workflows to integrate apps, data, systems, and services across enterprises or organizations. 
+  - Logic Apps simplifies app integration, data integration, system integration, enterprise application integration (EAI), and business-to-business (B2B) communication, whether in the cloud, on premises, or both. For example, the following are just a few workloads that can be automated with Logic Apps:
+  - Process and route orders across on-premises systems and cloud services
+  - Send email notifications with Microsoft 365 when events happen in various systems, apps, and services
+  - Move uploaded files from an SFTP or FTP server to Azure Storage
+  - Monitor tweets for a specific subject, analyze the sentiment, and create alerts or tasks for items that need review.
+    - Reference(s): https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview
+
+- **Azure Resource Manager (ARM)** is the deployment and management service for Azure. It provides a management layer that enables organizations to create, update, and delete resources in their Azure accounts. It offers management features such as access control, locks, and tags to secure and organize resources after deployment.
+  - Reference(s): https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview
+
+- **Azure Kubernetes Service** (AKS) makes it simple to deploy a managed Kubernetes cluster in Azure. AKS reduces the complexity and operational overhead of managing Kubernetes by offloading much of that responsibility to Azure. For a hosted Kubernetes service, Azure handles critical tasks such as health monitoring and maintenance. The Kubernetes masters are managed by Azure. Users only manage and maintain the agent nodes.
+  - Reference(s): https://docs.microsoft.com/en-us/azure/aks/intro-kubernetes
+
+- **Microsoft Azure Sentinel** is a scalable cloud-native security information event management (SIEM) and security orchestration automated response (SOAR) solution. Azure Sentinel delivers intelligent security analytics and threat intelligence across the enterprise, providing a single solution for alert detection, threat visibility, proactive hunting, and threat response.
+  - Azure Sentinel provides a bird’s-eye view across the enterprise, alleviating the stress of increasingly sophisticated attacks, increasing volumes of alerts, and long resolution timeframes. It allows you to do the following:
+  - Collect data at cloud scale across all users, devices, applications, and infrastructure, both on premises and in multiple clouds
+  - Detect previously undetected threats and minimize false positives using Microsoft's analytics and unparalleled threat intelligence
+  - Investigate threats with artificial intelligence and hunt for suspicious activities at scale, tapping into years of cybersecurity work at Microsoft
+  - Respond to incidents rapidly with built-in orchestration and automation of common tasks
+  - Reference(s): https://docs.microsoft.com/en-us/azure/sentinel/overview
+
+- Azure Trust Center was launched with the goal of providing customers and partners with easier access to regulatory compliance information.
+- Reference(s): https://www.microsoft.com/en/trust-center/product-overview
+- https://azure.microsoft.com/en-us/overview/trusted-cloud/
+
+- Microsoft uses a wide variety of physical, infrastructure, and operational controls to help secure Azure—but there are additional actions you need to take to help safeguard your workloads. Turn on Security Center to quickly strengthen your security posture and protect against threats. Security Center offers posture management for your cloud workloads and enhanced threat protection with the Security Center Standard tier.
+- Reference: https://azure.microsoft.com/en-us/services/security-center/ 
+
+
+- To create or delete management locks, the following actions are necessary:
+  - Microsoft.Authorization/*
+  - Microsoft.Authorization/locks/*
+    - Of the built-in roles, only Owner and User Access Administrator are granted these actions.
+    - Reference(s): https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources
+
+- **Azure network security groups** can be used to filter network traffic to and from Azure resources in an Azure virtual network. 
+  - A network security group contains security rules that allow or deny inbound network traffic to or outbound network traffic from several types of Azure resources.
+  - For each rule, a source, destination, port, and protocol can be specified.
+  - Reference(s): https://docs.microsoft.com/en-us/azure/virtual-network/security-overview
+
+- **Azure China** has distinct pricing and requires an account separate from an Azure global account. Microsoft Azure operated by 21Vianet (Azure China) is a physically separate instance of cloud services located in China. It is independently operated and transacted by Shanghai Blue Cloud Technology Co., Ltd., a wholly owned subsidiary of Beijing 21Vianet Broadband Data Center Co., Ltd. Any customer data on Azure China stays within China.
+  - Reference(s): https://azure.microsoft.com/en-us/global-infrastructure/china/
+
+- **Azure Policy** helps enforce organizational standards and assess compliance at scale. The compliance dashboard in Azure Policy provides an aggregated view that enables the evaluation of the overall state of the environment. In addition, viewers can drill down to each resource and  policy granularly. Azure Policy can help bring existing resources into compliance through bulk remediation and automatic remediation for new resources. Common use cases for Azure Policy include implementing governance for resource consistency, regulatory compliance, security, cost, and management. Policy definitions for these common use cases are available in the Azure environment as built-ins to help you get started.
+- Reference(s): https://docs.microsoft.com/en-us/azure/governance/policy/overview
+
+#### Links:
 - https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/considerations/fundamental-concepts
 - https://docs.microsoft.com/en-us/azure/governance/blueprints/overview
 - Some notes are from course: https://www.udemy.com/course/microsoft-azure-beginners-guide
